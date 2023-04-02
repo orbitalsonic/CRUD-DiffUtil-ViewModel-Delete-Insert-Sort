@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.orbitalsonic.filemanagementviewmodel.datamodel.FileItem" />
+
+        <variable
+            name="itemClick"
+            type="com.orbitalsonic.filemanagementviewmodel.interfaces.OnFileItemClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:background="?selectableItemBackground"
+        android:onClick="@{() -> itemClick.onFileClick(item)}"
+        >
+
+        <ImageView
+            android:id="@+id/iv_file"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            app:round="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:text="@{item.fileName}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:paddingHorizontal="14dp"
+            app:layout_constraintTop_toTopOf="@+id/iv_file"
+            app:layout_constraintBottom_toTopOf="@+id/tv_file_description"
+            app:layout_constraintStart_toEndOf="@+id/iv_file"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            tools:text="My File Name 1" />
+
+        <TextView
+            android:id="@+id/tv_file_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:paddingHorizontal="14dp"
+            android:text="@{item.fileDescription}"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@+id/tv_file_name"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_file"
+            app:layout_constraintStart_toEndOf="@+id/iv_file"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            tools:text="File Descrioption" />
+
+
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="?selectableItemBackgroundBorderless"
+            app:tint="@color/black"
+            android:src="@drawable/ic_baseline_delete_forever_24"
+            android:onClick="@{() -> itemClick.onDeleteClick(item)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

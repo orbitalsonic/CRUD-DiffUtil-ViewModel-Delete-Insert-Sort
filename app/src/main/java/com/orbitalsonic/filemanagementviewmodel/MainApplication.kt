@@ -1,6 +1,7 @@
 package com.orbitalsonic.filemanagementviewmodel
 
 import android.app.Application
+import com.orbitalsonic.filemanagementviewmodel.koin.modulesList
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
